@@ -1,6 +1,6 @@
 $main-height: calc(100vh - 230px);
 
-body{
+body {
 
 display: flex;
 flex-direction: column;
@@ -8,16 +8,27 @@ min-height: 200vh;
 width: 100%;
 background-color: rgb(12, 0, 26);
 }
-header{
+header {
    position: fixed;
    top: 0;
    width: 100%;
+   .wrapper {
+
+   }
 }
-main{
-   & .content{
+main {
+   & .content {
    }
 }
 
-footer{
+footer {
    margin-top: auto;
+}
+.wrapper {
+   height: 200px; 
+   overflow: hidden;
+}
+.svg-bg {
+   height: 100%; 
+   width: 100%;
 }

@@ -9,43 +9,44 @@
 
 <body>
    <header>
+      <div class="wrapper">
+         <svg class="svg-bg" viewBox="0 0 500 200" preserveAspectRatio="none" style="height: 100%; width: 100%;">
+            <defs>
+               <linearGradient id="gradient1" x1="0" x2="0" y1="1" y2="0">
+                  <stop stop-color="rgb(74, 5, 150)" offset="0%"></stop>
+                  <stop stop-color="rgb(12, 0, 26)" offset="100%"></stop>
+               </linearGradient>
+            </defs>  
+            <path class="wave" fill="url(#gradient1)" 
+            d="M 0,100 
+            C 230,180 116,24 500,120 
+            L 500,0 
+            L 0,0 Z"></path>
+         </svg>
+      </div>
+   </header>
 
- <div style="height: 200px; overflow: hidden;" >
-   <svg viewBox="0 0 500 200" preserveAspectRatio="none" style="height: 100%; width: 100%;">
-      <defs>
-         <linearGradient id="gradient1" x1="0" x2="0" y1="1" y2="0">
-            <stop stop-color="rgb(74, 5, 150)" offset="0%"></stop>
-            <stop stop-color="rgb(12, 0, 26)" offset="100%"></stop>
-         </linearGradient>
-      </defs>  
-      <path class="wave" fill="url(#gradient1)" 
-      d="M 0,100 
-      C 230,180 116,24 500,120 
-      L 500,0 
-      L 0,0 Z"></path>
-   </svg>
-</div>
-</header>
    <main>
       <div class="content"></div>
    </main>
+
    <footer>
 
-<div style="height: 200px; overflow: hidden;" >
-   <svg viewBox="0 0 500 200" preserveAspectRatio="none" style="height: 100%; width: 100%;">
-      <defs>
-         <linearGradient id="gradient2" x1="0" x2="0" y1="1" y2="0">
-            <stop stop-color="rgb(12, 0, 26)" offset="0%"></stop>
-            <stop stop-color="rgb(74, 5, 150)" offset="100%"></stop>
-         </linearGradient>
-      </defs>  
-      <path fill="url(#gradient2)" 
-      d="M 0,80 
-      C 230,180 116,24 500,120 
-      L 500,200.00 
-      L 0.00,200 Z"></path>
-   </svg>
-</div>  
-</footer>
+      <div class="wrapper">
+         <svg class="svg-bg" viewBox="0 0 500 200" preserveAspectRatio="none">
+            <defs>
+               <linearGradient id="gradient2" x1="0" x2="0" y1="1" y2="0">
+                  <stop stop-color="rgb(12, 0, 26)" offset="0%"></stop>
+                  <stop stop-color="rgb(74, 5, 150)" offset="100%"></stop>
+               </linearGradient>
+            </defs>  
+            <path fill="url(#gradient2)" 
+            d="M 0,80 
+            C 230,180 116,24 500,120 
+            L 500,200.00 
+            L 0.00,200 Z"></path>
+         </svg>
+      </div>  
+   </footer>
 </body>
 </html>
