@@ -26,17 +26,17 @@ export class Wave {
       if(window.scrollY <= 200) {
          for (const height in this.originHeights) {
             this.currentHeights[height] = this.alignDeviationReductor(this.scrollPosition, this.outputHeight, this.originHeights[height]);
-            console.log( this.currentHeights[height])
          }
-
          this.waveElem.setAttribute('d', 
          `M-0,${this.currentHeights.m} 
-         C230,${this.currentHeights.c1} 116,${this.currentHeights.c2} 500,${this.currentHeights.c3} L500.00,0.00 L0.00,0.00 Z`);
+         C230,${this.currentHeights.c1} 116,${this.currentHeights.c2} 500,${this.currentHeights.c3} 
+         L500.00,0.00 L0.00,0.00 Z`);
       } 
       if (window.scrollY > 200 && this.originHeights != this.outputHeight){
          this.waveElem.setAttribute('d', 
          `M-0,${this.outputHeight} 
-         C230,${this.outputHeight} 116,${this.outputHeight} 500,${this.outputHeight} L500.00,0.00 L0.00,0.00 Z`);
+         C230,${this.outputHeight} 116,${this.outputHeight} 500,${this.outputHeight} 
+         L500.00,0.00 L0.00,0.00 Z`);
       
       }
    }
