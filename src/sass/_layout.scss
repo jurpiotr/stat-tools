@@ -12,9 +12,6 @@ header {
    position: fixed;
    top: 0;
    width: 100%;
-   .wrapper {
-
-   }
 }
 main {
    width: 100%;
@@ -22,6 +19,7 @@ main {
    margin: 55vmin auto 2vmin;
 
    .table{
+
       width: 90%;
       min-height: 500px;
       display: flex;
@@ -53,10 +51,15 @@ footer {
    margin-top: auto;
 }
 .wrapper {
+   margin: 0;
    height: 50vmin; 
-   overflow: hidden;
 }
 .svg-bg {
-   height: 100%; 
+   overflow: hidden;
+   height: auto;
    width: 100%;
+
+   .wave {
+
+   }
 }
