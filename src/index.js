@@ -1,13 +1,10 @@
 import './sass/index.scss';
 import { Wave } from './js/Wave';
 
-
 function builder () {
-   const waveElem = document.querySelector('.wave');
+   const svgElem = document.querySelector('.svg-bg');
    const content = document.querySelector('#ST');
-   const WaveHeader = new Wave(waveElem, 200, 100, 40);
-
-
+   const WaveHeader = new Wave(svgElem, 200, 100, 200);
 
    window.addEventListener('scroll', () => {
       WaveHeader.scrollToTop()
