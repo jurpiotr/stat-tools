@@ -9,6 +9,7 @@ width: 100%;
 background-color: rgb(12, 0, 26);
 }
 header {
+   z-index: 3;
    position: fixed;
    top: 0;
    width: 100%;
@@ -40,11 +41,14 @@ main {
          height: 3em;
          padding: 0 1em;
          line-height: 3em;
-         font-size: 2em;
+         font-size: 1.2em;
          border-radius: 1vmin;
          background: rgb(124, 87, 255);
          box-shadow: inset 3px 3px 5px rgb(156, 181, 255),
          3px 3px 5px rgb(0, 15, 75);
+         &--active{
+            background-color: green;
+         }
       }
    }
 }
