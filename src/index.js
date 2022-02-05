@@ -8,6 +8,10 @@ function builder () {
    const WaveHeader = new Wave(svgElem, 200, 100, 200);
    const tableST = new Table(tableElem);
 
+   const move = (e) => {
+      tableST.move(e.target);
+   }
+
    tableST.show();
    window.addEventListener('scroll', () => {
       WaveHeader.scrollToTop()
@@ -17,17 +21,12 @@ function builder () {
       if(!e.target.classList.contains('table__row')){ return}
  
       tableST.start(e.target);
-   });
-
-   tableElem.addEventListener('mousemove', (e) => {
-
- 
-      tableST.move(e.target);
+      tableElem.addEventListener('mousemove', move);
    });
 
    tableElem.addEventListener('mouseup', (e) => {
       if(!e.target.classList.contains('table__row')){ return}
- 
+      tableElem.removeEventListener('mousemove', move)
       tableST.end(e.target);
    });
 
