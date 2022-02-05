@@ -11,6 +11,10 @@ function builder () {
    const move = (e) => {
       tableST.move(e.target);
    }
+   const leave = (e) => {
+      if(!tableST.isStart) { return }
+      tableST.end(e.target);
+   }
 
    tableST.show();
    window.addEventListener('scroll', () => {
@@ -18,18 +22,14 @@ function builder () {
    });
 
    tableElem.addEventListener('mousedown', (e) => {
-      if(!e.target.classList.contains('table__row')){ return}
- 
-      tableST.start(e.target);
-      tableElem.addEventListener('mousemove', move);
+      if(e.target.classList.contains('table__row')){ 
+         tableST.start(e.target);
+         tableElem.addEventListener('mousemove', move);
+      }
    });
 
-   tableElem.addEventListener('mouseup', (e) => {
-      if(!e.target.classList.contains('table__row')){ return}
-      tableElem.removeEventListener('mousemove', move)
-      tableST.end(e.target);
-   });
-
+   tableElem.addEventListener('mouseup', leave);
+   tableElem.addEventListener('mouseleave', leave)
 
 
 }
