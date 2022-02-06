@@ -20,7 +20,7 @@ main {
    margin: 55vmin auto 2vmin;
 
    .table{
-
+      @include user-select(none);
       width: 90%;
       min-height: 500px;
       position: relative;
@@ -46,8 +46,19 @@ main {
          background: rgb(124, 87, 255);
          box-shadow: inset 3px 3px 5px rgb(156, 181, 255),
          3px 3px 5px rgb(0, 15, 75);
+         &:hover{
+            cursor: -webkit-grab; 
+            cursor: -moz-grab;
+            cursor: grab;
+         }
          &--active{
-            background-color: green;
+            z-index: 1;
+            background-color: rgb(124, 87, 255);;
+            cursor: -webkit-grabbing !important; 
+            cursor: -moz-grabbing !important;
+            cursor: grabbing !important;
+            box-shadow: inset 2px 2px 8px rgb(255, 255, 255),
+            3px 3px 8px rgb(0, 0, 0);
          }
       }
    }

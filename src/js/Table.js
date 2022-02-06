@@ -19,7 +19,7 @@ export class Table {
       this.isStart = true;
       this.activeTab = e;
       this.startMouseY = window.event.pageY;
-      e.classList.add('table__active');
+      e.classList.add('table__row--active');
       e.innerText = `e.offsetTop: ${e.offsetTop} + window.event.pageY: ${window.event.pageY} e.clientHeight: ${e.clientHeight}`;
    }
    getPosition = () => {
@@ -30,10 +30,15 @@ export class Table {
       if(!this.siblingTab){return}
       this.siblingTab.style.transform = `translateY(${this.scrollY}px)`;
       this.activeTab.style.transform = `translateY(${-this.scrollY}px)`;
+      console.log(`${this.scrollY} ... ${this.activeTab.style.transform} getPos: ${this.getPosition()} pageY: ${window.event.pageY}`)
    }
    alignTab = () => {
-      this.tabs.forEach((t) => {
-         if(t !== this.activeTab || this.siblingTab)
+      // function that aligns the tabs position in the Table 
+      [
+       this.activeTab?.nextElementSibling, 
+       this.activeTab?.nextElementSibling?.nextElementSibling,
+       this.activeTab?.previousElementSibling,
+       this.activeTab?.previousElementSibling?.previousElementSibling].forEach((t) => {
          this.resetStyles(t);
       });
    }
@@ -41,53 +46,41 @@ export class Table {
       this.scrollY <= 0 ? 
          this.activeTab.parentElement.insertBefore(this.siblingTab,this.activeTab):
          this.activeTab.parentElement.insertBefore(this.activeTab,this.siblingTab);
-      this.scrollY = 0;
+      
       this.alignTab();
       this.startMouseY = window.event.pageY;
 
    }
    resetStyles = (tab) => {
-      console.log("reset")
 
-      tab?.removeAttribute('style') || this.siblingTab?.removeAttribute('style');
+      tab?.removeAttribute('style');
       this.activeTab.removeAttribute('style');
 
    }
    move = () => {
-      console.log("MOVE")
       this.siblingTab = this.scrollY <= 0 ? this.activeTab?.nextElementSibling : this.activeTab?.previousElementSibling;
       
       if(!this.isStart &&
-         !this.activeTab?.classList.contains('table__active') &&
+         !this.activeTab?.classList.contains('table__row--active') &&
          !this.siblingTab){ return }
       this.scrollY = this.startMouseY - window.event.pageY;
       this.activeTab.innerText = `diff move: ${-1*this.scrollY + this.activeTab.offsetTop} + next elem: ${this.activeTab.nextElementSibling?.offsetTop}`;
-      this.activeTab.style.zIndex = 1;
       this.diffPositionTabs = this.siblingTab?.offsetTop - this.activeTab.offsetTop;
       this.alignTab();
       this.setTranslateY();
 
-      if(this.activeTab.nextElementSibling?.offsetTop <= this.getPosition()){
-         this.transformTab();
-      }
-
-      if(this.activeTab.previousElementSibling?.offsetTop > this.getPosition()){
+      if(this.activeTab.nextElementSibling?.offsetTop <= this.getPosition() ||
+         this.activeTab.previousElementSibling?.offsetTop > this.getPosition()
+      ){
          this.transformTab();
          this.startMouseY = window.event.pageY;
       }
 
    }
    end = (e) => {
+      Math.abs(this.diffPositionTabs/2) < Math.abs(this.scrollY) ? this.transformTab() : this.resetStyles(this.siblingTab);
 
-      
-      console.log(Math.abs(this.diffPositionTabs/2) + ' ...' + Math.abs(this.scrollY));
-      if(Math.abs(this.diffPositionTabs/2) < Math.abs(this.scrollY)){
-         this.transformTab();
-      } else {
-         this.resetStyles();
-      }
-
-      e.classList.remove('table__active');
+      e.classList.remove('table__row--active');
       this.activeTab = undefined;
       this.isStart = false;      
      }

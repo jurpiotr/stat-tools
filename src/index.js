@@ -9,6 +9,7 @@ function builder () {
    const tableST = new Table(tableElem);
 
    const move = (e) => {
+      if(!tableST.isStart) { return }
       tableST.move(e.target);
    }
    const leave = (e) => {
