@@ -11,7 +11,6 @@ export class Table {
    }
 
    show = () => {
-      console.log(this.content)
       this.content.classList.add('table');
    }
 
