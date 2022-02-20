@@ -1,11 +1,14 @@
 import { Wave } from './Wave';
 import { Table } from './Table';
+import { tv } from './controller';
 
 export function builder () {
    const svgElem = document.querySelector('.svg-bg');
    const tableElem = document.querySelector('#tableElem');
    const WaveHeader = new Wave(svgElem, 200, 100, 200);
    const tableST = new Table(tableElem);
+   
+   tv();
 
    const move = (e) => {
       if(!tableST.isStart) { return }
