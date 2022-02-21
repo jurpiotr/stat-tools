@@ -1,17 +1,23 @@
 import axios from "axios";
 
+const render = () => {
+   filmList.forEach(film => {
+      
+   });
+}
+
 export const tv = async () => {
 
       const values = await axios({
-         url: `https://api.tvmaze.com/search/shows?q=it`,
+         url: `https://api.tvmaze.com/schedule`,
          method: "GET",
          headers: {
             Accept: 'application/json',
          }
       })
          .then((response) => {
-            const dataJSON = response.data;
-            return dataJSON;
+            const filmList = response.data;
+            return filmList;
          })
          .then((dataJSON) => {
             

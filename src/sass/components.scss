@@ -1,0 +1,99 @@
+@root{
+   --m: 10px;
+}
+.table{
+   
+   @include user-select(none);
+   width: 90%;
+   min-height: 500px;
+   position: relative;
+   display: flex;
+   display: none;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   gap: 10px;
+   margin: auto;
+   padding: 5%;
+   border-radius: 3vmin;
+   background: rgba(0, 0, 0, 0.3);
+   box-shadow: inset 5px 5px 10px rgb(156, 181, 255),
+   5px 5px 10px rgb(0, 15, 75);
+   &__row{
+      position: relative;
+      width: 80%;
+      height: 3em;
+      padding: 0 1em;
+      line-height: 3em;
+      font-size: 1.2em;
+      border-radius: 1vmin;
+      background: rgb(124, 87, 255);
+      box-shadow: inset 3px 3px 5px rgb(156, 181, 255),
+      3px 3px 5px rgb(0, 15, 75);
+      &:hover{
+         cursor: -webkit-grab; 
+         cursor: -moz-grab;
+         cursor: grab;
+      }
+      &--active{
+         z-index: 1;
+         background-color: rgb(124, 87, 255);;
+         cursor: -webkit-grabbing !important; 
+         cursor: -moz-grabbing !important;
+         cursor: grabbing !important;
+         box-shadow: inset 2px 2px 8px rgb(255, 255, 255),
+         3px 3px 8px rgb(0, 0, 0);
+      }
+   }
+}
+.videos {
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   align-items: center;
+   justify-content: center;
+   margin: 0 $margin-video-card;
+   &__video-card{
+
+      width: 70%;
+      height: auto;
+      @media only screen and (min-width: 480px) {
+         @include calc(width, #{"50% - #{$margin-video-card*2}"});
+      }
+      @media (min-width: 640px) {
+         @include calc(width, #{"33% - #{$margin-video-card*2}"});
+      }
+      @media (min-width: 960px) {
+         @include calc(width, #{"25% - #{$margin-video-card*2}"});
+      }
+      @media (min-width: 1280px) {
+         @include calc(width, #{"20% - #{$margin-video-card*2}"});
+      }
+      @media (min-width: 1600px) {
+         @include calc(width, #{"16% - #{$margin-video-card*2}"});
+      }
+      
+      min-height: 100px;
+      margin: $margin-video-card $margin-video-card;
+      color:rgb(124, 87, 255);
+      background-color: rgb(1, 0, 48);
+      border-radius: 1em;
+   }
+   &__content-card{
+      height: auto;
+   }
+   &__img-card{
+      width: 100%;
+      height: auto;
+   }
+}
+.search {
+   &__random{
+      width: fit-content;
+      margin: 2px auto;
+      padding: 0.5em;
+      cursor: pointer;
+      background-color: aqua;
+      border-radius: 0.5em;
+   }
+}
