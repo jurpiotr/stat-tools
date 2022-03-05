@@ -7,8 +7,8 @@ const render = (videoList) => {
          videoCards.innerHTML += `
          <div class="videos__video-card">
          <button class="videos__btn-add-card name="${video.id}">+Watchlist</button>
-         <img class="videos__img-card"src="${video.show.image.medium}" alt="${video.show.name}">
-            <p class="videos__title-card">${video.show.name}</p>
+         <img class="videos__img-card"src="${video.image||''}" alt="${video.name}">
+            <p class="videos__title-card">${video.name}</p>
       </div>
          `
    });
@@ -26,11 +26,21 @@ export const tv = async () => {
       }
    })
    .then((response) => {
-      return response.data;
+      console.log(response.data)
+      importantData = response.data.map((data) => {
+         if (!data.show.image){ return }
+         const obj = {
+            id: data.id,
+            image: data.show.image?.medium,
+            name: data.show.name
+         }
+         return obj;
+      });
+      console.log(importantData);
    })
-   .then((data) => {
-      render(data);
-   })
+   .then(() => {
+      render(importantData);
+   });
 
    return values;
 }
