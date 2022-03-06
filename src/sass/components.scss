@@ -122,6 +122,9 @@
          box-shadow: 0px 8px 6px -8px rgb(32, 136, 0);
          border: 2px solid rgb(50, 190, 8)
       }
+      &--on-watchlist{
+         background-color: rgba(31, 131, 0, 1);
+      }
    }
    &__title-card {
       padding: 2px;
