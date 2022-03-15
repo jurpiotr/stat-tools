@@ -15,7 +15,6 @@ export class Watchlist {
       return storage;
    }
    add = (obj) => {
-      console.log(obj)
       obj ? this.currentList.push(obj) : '';
       localStorage.setItem('watchlist', JSON.stringify(this.currentList));
    }
