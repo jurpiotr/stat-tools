@@ -4,9 +4,9 @@ import { tv } from './controller';
 
 export function builder () {
    const svgElem = document.querySelector('.svg-bg');
-   const tableElem = document.querySelector('#tableElem');
+   const STContainer = document.getElementById('ST_container');
    const WaveHeader = new Wave(svgElem, 200, 100, 200);
-   const tableST = new Table(tableElem);
+   const tableST = new Table();
    
    tv();
 
@@ -18,17 +18,20 @@ export function builder () {
       if(!tableST.isStart) { return }
       tableST.end(e.target);
    }
+   (function initTableST() {
+      tableST.show(STContainer);
+      const tableElem = document.querySelector('#tableElem');
+      tableElem.addEventListener('mousedown', (e) => {
+         if(e.target.classList.contains('table__row')){ 
+            tableST.start(e.target);
+            tableElem.addEventListener('mousemove', move);
+         }
+      });
+      tableElem.addEventListener('mouseup', leave);
+      tableElem.addEventListener('mouseleave', leave);
+   })();
 
-   tableST.show();
    window.addEventListener('scroll', () => {
       WaveHeader.scrollToTop();
    });
-   tableElem.addEventListener('mousedown', (e) => {
-      if(e.target.classList.contains('table__row')){ 
-         tableST.start(e.target);
-         tableElem.addEventListener('mousemove', move);
-      }
-   });
-   tableElem.addEventListener('mouseup', leave);
-   tableElem.addEventListener('mouseleave', leave);
 }

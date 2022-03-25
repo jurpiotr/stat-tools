@@ -1,6 +1,5 @@
 export class Table {
-   constructor(content){
-      this.content = content;
+   constructor(){
       this.isStart = false;
       this.scrollY;
       this.startMouseY;
@@ -9,9 +8,21 @@ export class Table {
       this.siblingTab;
       [...this.tabs] = document.getElementsByClassName('table__row');
    }
+   renderTable = (node) => {
+      node.innerHTML = `
+      <div id="tableElem" class="table">
+         <div class="table__row">One</div>
+         <div class="table__row">Two</div>
+         <div class="table__row">Three</div>
+         <div class="table__row">Four</div>
+         <div class="table__row">Five</div>
+      </div>
+      `
+      return node;
+   }
 
-   show = () => {
-      this.content.classList.add('table');
+   show = (STContainer) => {
+      this.renderTable(STContainer);
    }
 
    start = (e) => {
