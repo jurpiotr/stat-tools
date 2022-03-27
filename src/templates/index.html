@@ -10,6 +10,12 @@
 <body>
    <header>
       <div class="wrapper">
+         <nav class="wrapper__nav">
+            <div class="nav">
+               <div id="search_randomTV_btn" class="nav__item">Search random video</div>
+               <div id="watchlist_btn" class="nav__item">Watchlist</div>
+            </div>
+         </nav>
          <svg class="svg-bg" viewBox="0 0 500 200" preserveAspectRatio="none" style="height: 100%; width: 100%;">
             <defs>
                <linearGradient id="gradient1" x1="0" x2="0" y1="1" y2="0">
@@ -27,25 +33,9 @@
    </header>
 
    <main>
-      <div class="search">
-         <p id="search_random" class="search__random">Search random video</p>
-         <p class="search__no-results">NO RESULTS</p>
-      </div>
-      
-      <div id="ST_container"></div>
 
-      <div id="video-cards" class="videos">
-         <div class="videos__video-card">
-            <button class="videos__btn-add-card">+Watchlist</button>
-            <img class="videos__img-card"src="https://static.tvmaze.com/uploads/images/medium_portrait/394/986215.jpg" alt="picture">
-               <p class="videos__title-card">The Lord Of The Rings - The Rings Od Power</p>
-         </div>
-         <div class="videos__video-card">
-            <button class="videos__btn-add-card">+Watchlist</button>
-            <img class="videos__img-card"src="https://static.tvmaze.com/uploads/images/medium_portrait/394/986215.jpg" alt="picture">
-               <p class="videos__title-card">LOTR</p>
-         </div>
-      </div>
+      <p class="search__no-results">NO RESULTS</p>
+      <div id="ST_container"></div>
       
    </main>
 

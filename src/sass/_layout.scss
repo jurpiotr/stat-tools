@@ -19,23 +19,26 @@ main {
    min-height: 500px;
    margin: 55vmin auto 2vmin;
 }
-#ST_container{
-
-}
 
 footer {
    margin-top: auto;
 }
 .wrapper {
+   position: relative;
    margin: 0;
-   height: 50vmin; 
+   height: 50vmin;
+   
+   &__nav{
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      right: 0px;
+      width: 60%;
+      height: inherit;
+   }
 }
 .svg-bg {
    overflow: hidden;
    height: auto;
    width: 100%;
-
-   .wave {
-
-   }
 }

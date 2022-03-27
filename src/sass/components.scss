@@ -1,13 +1,37 @@
-.search {
-   &__random{
+.nav {
+   position: relative;
+   display: flex;
+   justify-content: center;
+   height: 50%;
+   
+   &__item {
+      position: relative;
       width: fit-content;
-      margin: 0em auto 2em auto;
-      padding: 1em;
-      cursor: pointer;
-      background-color: rgb(126, 91, 255);
-      font-weight: bold;
+      height: 5vmin;
+      line-height: 4vmin;
+      margin: auto;
+      padding: 0px 10px;
+      translate: transformY(50%);
+      border: 3px solid rgb(106, 64, 255);
       border-radius: 2em;
+      cursor: pointer;
+      color: rgb(106, 64, 255);
+      font-weight: bold;
+      font-size: 2.5vmin;
+
+      &:hover{
+         background-color: rgb(126, 91, 255);
+         color: inherit;
+      }
+
    }
+   #search_randomTV_btn{
+      display: block;
+   }
+   #watchlist_btn{
+      display: none;
+   }
+
    &__no-results{
       display: none;
       width: fit-content;

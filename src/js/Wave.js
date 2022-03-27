@@ -25,6 +25,20 @@ export class Wave {
       const result = origin - window.scrollY/(pos/(origin-output));
       return result;
    }
+   contentWave = (defaultHeight) => {
+      const navItems = this.svgElem.previousElementSibling.querySelectorAll('.nav__item');
+      const searchElem = this.svgElem.previousElementSibling.children[0];
+      const newScale = Math.sqrt(this.currentHeights.wrapperSvg/25);
+      navItems.forEach((navItem) => {
+         if(defaultHeight === 'constant'){
+            navItem.style.transform = `scale(1)`;
+            searchElem.style.height = `100%`;
+          } else {
+            navItem.style.transform = `scale(${newScale > 1 ? newScale : 1 })`;
+            searchElem.style.height = `${50 + window.scrollY/4}%`;
+         }
+      });
+   }
 
    scrollToTop = () => {
 
@@ -40,7 +54,7 @@ export class Wave {
 
          // changing height for SVG element
          this.svgElem.parentElement.style.height = `${this.currentHeights.wrapperSvg}vmin`;
-
+         this.contentWave();
       } 
       if (window.scrollY > 200 && this.originHeights != this.outputHeight){
          this.waveElem.setAttribute('d', 
@@ -48,6 +62,7 @@ export class Wave {
          C230,${this.outputHeight} 116,${this.outputHeight} 500,${this.outputHeight} 
          L500.00,0.00 L0.00,0.00 Z`);
          this.svgElem.parentElement.style.height = `${this.outputHeight/20}vmin`;
+         this.contentWave('constant');
       }
    }
 }

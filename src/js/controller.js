@@ -3,23 +3,28 @@ import axios from "axios";
 const watchList = new Watchlist();
 
 const render = (videoList) => {
-   const videoCards = document.getElementById('video-cards');
-   videoCards.innerHTML = '';
-      videoList.map((video) => {
-         const newClass = watchList?.contains(video.id, 'videos__btn-add-card--on-watchlist') || '';
-         const sign = newClass === '' ? '+' : '-';
-         videoCards.innerHTML += `
-         <div class="videos__video-card">
-         <button class="videos__btn-add-card ${newClass}" name="${video.id}">${sign}Watchlist</button>
-         <img class="videos__img-card"src="${video.image||''}" alt="${video.name}">
-            <p class="videos__title-card">${video.name}</p>
+   const ST_container = document.getElementById('ST_container');
+   const videosElem = document.createElement('div');
+   videosElem.setAttribute('id', 'video-cards');
+   videosElem.classList.add('videos');
+
+   videoList.map((video) => {
+      const newClass = watchList?.contains(video.id, 'videos__btn-add-card--on-watchlist') || '';
+      const sign = newClass === '' ? '+' : '-';
+      videosElem.innerHTML += `
+      <div class="videos__video-card">
+      <button class="videos__btn-add-card ${newClass}" name="${video.id}">${sign}Watchlist</button>
+      <img class="videos__img-card"src="${video.image||''}" alt="${video.name}">
+         <p class="videos__title-card">${video.name}</p>
       </div>
-         `
+      `
    });
-   return videoCards;
+   ST_container.innerHTML = '';
+   ST_container.appendChild(videosElem);
+   return ST_container;
 }
 
-export const tv = async () => {
+export const getScheduleTV = async () => {
    let importantData = [];
 
    const values = await axios({
