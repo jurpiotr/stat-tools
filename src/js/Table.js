@@ -1,5 +1,8 @@
+
+
 export class Table {
-   constructor(){
+   constructor(watchlist){
+      this.watchlist = watchlist;
       this.isStart = false;
       this.scrollY;
       this.startMouseY;
@@ -8,23 +11,33 @@ export class Table {
       this.siblingTab;
       [...this.tabs] = document.getElementsByClassName('table__row');
    }
-   renderTable = (node) => {
-      node.innerHTML = `
-      <div id="tableElem" class="table">
-         <div class="table__row">One</div>
-         <div class="table__row">Two</div>
-         <div class="table__row">Three</div>
-         <div class="table__row">Four</div>
-         <div class="table__row">Five</div>
-      </div>
-      `
-      return node;
+   renderTable = (STContainer) => {
+      const storageWatchlist = this.watchlist.getStorage();
+
+      const tableHTML = document.createElement('div');
+      tableHTML.setAttribute('id', 'tableElem');
+      tableHTML.classList.add('table')
+      storageWatchlist.map((item, index) => {
+         tableHTML.innerHTML +=`
+            <div id="${item.id}" class="table__row">
+               <div class="table__lp">${index+1}</div>
+               <img class="table__img" src="${item.image}" alt="${item.name}" draggable="false">
+               <div class="table__title">${item.name}</div>
+               <div class="table__deleter">❌</div>
+            </div>
+         `});
+      STContainer.innerHTML = '';
+      STContainer.appendChild(tableHTML);
+      return STContainer;
    }
 
    show = (STContainer) => {
       this.renderTable(STContainer);
    }
-
+   deleteRow = (e,STContainer) => {
+      this.watchlist.delete(e);
+      this.renderTable(STContainer)
+   }
    start = (e) => {
       this.isStart = true;
       this.activeTab = e;
