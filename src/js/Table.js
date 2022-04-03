@@ -1,5 +1,3 @@
-
-
 export class Table {
    constructor(watchlist){
       this.watchlist = watchlist;

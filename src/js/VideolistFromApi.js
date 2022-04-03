@@ -25,7 +25,7 @@ export class VideolistFromApi {
       });
       STContainer.innerHTML = '';
       STContainer.appendChild(videosElem);
-      return ST_container;
+      return STContainer;
    }
 
    clearCard = (e) => {
@@ -34,9 +34,9 @@ export class VideolistFromApi {
    }
 
    scheduleTV = async (STContainer) => {
-
       return await getScheduleTV
       .then((response) => {
+         this.importantData = [];
          response.data.forEach((data) => {
             if(data.show.image?.medium) {   
                const video = this.watchlist.createItem(data.id, data.show.image?.medium, data.show.name);
