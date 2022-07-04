@@ -28,10 +28,11 @@ footer {
    margin: 0;
    height: 50vmin;
    
-   &__nav{
+   &__nav {
       position: absolute;
       display: flex;
-      justify-content: center;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
       right: 0px;
       width: 60%;
       height: inherit;

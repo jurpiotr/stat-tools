@@ -34,7 +34,8 @@ export class Wave {
             navItem.style.transform = `scale(1)`;
             searchElem.style.height = `100%`;
           } else {
-            navItem.style.transform = `scale(${newScale > 1 ? newScale : 1 })`;
+            navItem.style.fontSize = 50 + newScale;
+         //   navItem.style.transform = `scale(${newScale > 1 ? newScale : 1 })`;
             searchElem.style.height = `${50 + window.scrollY/4}%`;
          }
       });
