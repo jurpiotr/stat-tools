@@ -1,12 +1,11 @@
-import { getScheduleTV } from './controller';
+import { getTV } from './controller';
 
 export class VideolistFromApi {
    constructor(watchlist){
       this.watchlist = watchlist;
-      this.importantData = [];
    }
 
-   render = (videoList, STContainer) => {
+   render = (videoList, container) => {
       
       const videosElem = document.createElement('div');
       videosElem.setAttribute('id', 'video-cards');
@@ -23,9 +22,9 @@ export class VideolistFromApi {
          </div>
          `
       });
-      STContainer.innerHTML = '';
-      STContainer.appendChild(videosElem);
-      return STContainer;
+      container.innerHTML = '';
+      container.appendChild(videosElem);
+      return container;
    }
 
    clearCard = (e) => {
@@ -33,8 +32,8 @@ export class VideolistFromApi {
       e.target.textContent = '+Watchlist';
    }
 
-   scheduleTV = async (STContainer) => {
-      return await getScheduleTV
+   fetchShows = async (STContainer, param, query) => {
+      return await getTV(param, query)
       .then((response) => {
          this.importantData = [];
          response.data.forEach((data) => {

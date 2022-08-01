@@ -8,13 +8,14 @@ export function builder () {
    const STContainer = document.getElementById('ST_container');
    const searchRandomTV_btn = document.getElementById('search_randomTV_btn');
    const watchlist_btn = document.getElementById('watchlist_btn');
+   const iconSearch_btn = document.getElementById('icon-search');
    const WaveHeader = new Wave(svgElem, 200, 100, 200);
    const watchlist = new Watchlist;
    const tableST = new Table(watchlist);
    const videolistFromApi = new VideolistFromApi(watchlist);
 
    searchRandomTV_btn.addEventListener('click', () => {
-      videolistFromApi.scheduleTV(STContainer);
+      videolistFromApi.fetchShows(STContainer, 'schedule');
       searchRandomTV_btn.style.display = 'none';
       watchlist_btn.style.display = 'block';
    });
@@ -22,6 +23,9 @@ export function builder () {
       tableST.show(STContainer);
       searchRandomTV_btn.style.display = 'block';
       watchlist_btn.style.display = 'none';
+   });
+   iconSearch_btn.addEventListener('click', () => {
+      videolistFromApi.fetchShows(STContainer, 'search', 'search');
    });
    STContainer.addEventListener('click', (e) => {
       if(e.target.classList.contains('videos__btn-add-card')){
