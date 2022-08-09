@@ -35,16 +35,29 @@ export class VideolistFromApi {
    fetchShows = async (STContainer, param, query) => {
       return await getTV(param, query)
       .then((response) => {
+         console.log(response.data);
          this.importantData = [];
+         const setGenresShow = (show) => {
+            return show.genres.length == 0 ? show.type : show.genres
+         };
          response.data.forEach((data) => {
-            if(data.show.image?.medium) {   
-               const video = this.watchlist.createItem(data.id, data.show.image?.medium, data.show.name);
+            if(data.show.image?.medium) {
+               const video = this.watchlist
+               .createItem(
+                  data.id || data.show.id, 
+                  data.show.image?.medium, 
+                  data.show.name,
+                  data.show.averageRuntime,
+                  setGenresShow(data.show),
+                  data.show.network?.name 
+                  );
                this.importantData.push(video);
             }
          })
       })
       .then(() => {
          this.render(this.importantData, STContainer);
+         console.log(this.importantData)
          return this.importantData;
       })
    }

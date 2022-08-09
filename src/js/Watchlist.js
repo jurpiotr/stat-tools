@@ -2,11 +2,14 @@ export class Watchlist {
    constructor(){
       this.currentList = JSON.parse(localStorage.getItem('watchlist')) || [];
    }
-   createItem = (id, image, name ) => {
+   createItem = (id, image, name, averageRuntime, genres, network) => {
       const item = {
-         id: id,
-         image: image,
-         name: name
+         id,
+         image,
+         name,
+         averageRuntime,
+         genres,
+         network
       }
       return item;
    }

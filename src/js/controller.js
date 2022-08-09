@@ -14,6 +14,8 @@ export const getTV = (param, query) => {
             Accept: 'application/json',
          }
       })
+   queries.query = '';
+   console.log(response)
    return response;
 
 }

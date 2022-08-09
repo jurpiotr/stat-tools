@@ -9,6 +9,7 @@ export function builder () {
    const searchRandomTV_btn = document.getElementById('search_randomTV_btn');
    const watchlist_btn = document.getElementById('watchlist_btn');
    const iconSearch_btn = document.getElementById('icon-search');
+   const inputSearch_btn = document.getElementById('input-search');
    const WaveHeader = new Wave(svgElem, 200, 100, 200);
    const watchlist = new Watchlist;
    const tableST = new Table(watchlist);
@@ -25,7 +26,7 @@ export function builder () {
       watchlist_btn.style.display = 'none';
    });
    iconSearch_btn.addEventListener('click', () => {
-      videolistFromApi.fetchShows(STContainer, 'search', 'search');
+      videolistFromApi.fetchShows(STContainer, 'search', inputSearch_btn.value);
    });
    STContainer.addEventListener('click', (e) => {
       if(e.target.classList.contains('videos__btn-add-card')){
